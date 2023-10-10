@@ -16,9 +16,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/clock.css">
+    <link rel="stylesheet" href="assets/css/tbl.css">
+    <link rel="stylesheet" href="assets/css/css.css">
+
 </head>
+
 <body>
 
 <!--/////////////////// Navigation Bar /////////////////////////////-->
@@ -45,25 +49,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
                     <a class="navbar-brand mt-2 mt-lg-0" >
-                       <h1>POS</h1>
+                       <h1 id="pos">POS</h1>
                     </a>
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#home_section">Home</a>
+                            <a class="nav-link" id="home_nav">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#customer_section">Customer</a>
+                            <a class="nav-link" id="customer_nav" >Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#item_section">Items</a>
+                            <a class="nav-link" id="items_nav" >Items</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#manage_order_section">Mange Order</a>
+                            <a class="nav-link" id="place_order_nav">Place Order</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#palce_order_section">Place Order</a>
+                            <a class="nav-link" id="manage_order_nav">Mange Order</a>
                         </li>
+
                     </ul>
 
                 </div>
@@ -80,161 +85,136 @@
 <!--    ////////////////////////// Home ///////////////////////-->
 
     <section id="home_section">
-       <div id="countCards">
-           <div class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="assets/img/service.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Customer</h5>
+                                <p class="card-text"></p>
+                                <p class="card-text"><small class="text-muted">190</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0" >
+                        <div class="col-md-4">
+                            <img src="assets/img/groceries.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8" >
+                            <div class="card-body">
+                                <h5 class="card-title">Items</h5>
+                                <p class="card-text"></p>
+                                <p class="card-text"><small class="text-muted">54</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="assets/img/order.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Orders</h5>
+                                <p class="card-text"></p>
+                                <p class="card-text"><small class="text-muted">49</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+
+            <div class="col">
+                <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+            </div>
 
 
 
-                   </div>
-                   <div class="row">
-                       <div class="col-xl-6 col-md-12 mb-4">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="d-flex justify-content-between p-md-1">
-                                       <div class="d-flex flex-row">
-                                           <div class="align-self-center">
-                                               <img src="assets/img/service.png" alt="" width="50">
-                                           </div>
-                                           <div>
-                                               <h4>Total Customers</h4>
-                                               <p class="mb-0"></p>
-                                           </div>
-                                       </div>
-                                       <div class="align-self-center">
-                                           <h2 class="h1 mb-0">18,000</h2>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-6 col-md-12 mb-4">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="d-flex justify-content-between p-md-1">
-                                       <div class="d-flex flex-row">
-                                           <div class="align-self-center">
-                                               <img src="assets/img/groceries.png" alt="" width="50">
-                                           </div>
-                                           <div>
-                                               <h4>Total Items</h4>
-                                               <p class="mb-0"></p>
-                                           </div>
-                                       </div>
-                                       <div class="align-self-center">
-                                           <h2 class="h1 mb-0">84,695</h2>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+        </div>
 
-                       <div class="col-xl-6 col-md-12 mb-4">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="d-flex justify-content-between p-md-1">
-                                       <div class="d-flex flex-row">
-                                           <div class="align-self-center">
-                                               <img src="assets/img/order.png" alt="" width="50">
-                                           </div>
-                                           <div>
-                                               <h4>Total Orders</h4>
-                                               <p class="mb-0"></p>
-                                           </div>
-                                       </div>
-                                       <div class="align-self-center">
-                                           <h2 class="h1 mb-0">84,695</h2>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-6 col-md-12 mb-4">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="d-flex justify-content-between p-md-1">
-                                       <div class="d-flex flex-row">
-                                           <div class="align-self-center">
-                                               <img src="assets/img/cash_payment.png" alt="" width="50">
-                                           </div>
-                                           <div>
-                                               <h4>Total Orders Amount</h4>
-                                               <p class="mb-0"></p>
-                                           </div>
-                                       </div>
-                                       <div class="align-self-center">
-                                           <h2 class="h1 mb-0">84,695</h2>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-
-
-           </div>
-       </div>
 
     </section>
-
 
 <!--    ///////////////////////// Customer page ///////////////////////////-->
 
     <section id="customer_section">
 
         <div class="container">
-            <h1>Customer Manage</h1>
+
             <div class="row">
                 <div class="col">
                     <form class="row g-3">
-
+                        <h1>Customer Manage</h1>
+                        <h1></h1>
                         <div class="col-12">
-                            <label for="customer_id" class="form-label">Customer ID</label>
-                            <input type="password" class="form-control" id="customer_id" placeholder="1">
+                            <label for="customerId" class="form-label">Customer ID</label>
+                            <input type="number" class="form-control" id="customerId" >
                         </div>
                         <div class="col-12">
                             <label for="customer_name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="customer_name" placeholder="Dinil">
+                            <input type="text" class="form-control" id="customer_name" >
                         </div>
                         <div class="col-12">
                             <label for="customer_mail" class="form-label">Mail</label>
-                            <input type="email" class="form-control" id="customer_mail" placeholder="dinil@gmail.com">
+                            <input type="email" class="form-control" id="customer_mail">
                         </div>
                         <div class="col-12">
-                            <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <label for="customer_Address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="customer_Address" >
                         </div>
                         <div class="col-md-4">
-                            <label for="inputState" class="form-label">Gender</label>
-                            <select id="inputState" class="form-select">
+                            <label for="customer_Gender" class="form-label">Gender</label>
+                            <select id="customer_Gender" class="form-select">
                                 <option selected></option>
-                                <option>...</option>
+                                <option>Male</option>
+                                <option>Female</option>
                             </select>
                         </div>
 
 
 
+                        <div id="customerBtn">
+                            <div class="container">
+                                <div class="row">
+                                    <br>
+                                </div>
+                                <div class="row">
 
-                        <div class="container">
-                            <div class="row">
-                                <br>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-outline-primary">Save</button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-outline-success">Update</button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                                </div>
-                                <div class="col">
-                                    <button type="reset" class="btn btn-outline-info">Reset</button>
-                                    <h1></h1>
-                                </div>
+                                    <div class="col">
+                                        <button id="custSaveBtn" type="button"  class="btn btn-outline-primary">Save</button>
+                                    </div>
+                                    <div class="col">
+                                        <button id="custUpdateBtn" type="button" class="btn btn-outline-success">Update</button>
+                                    </div>
+                                    <div class="col">
+                                        <button id="custdeleteBtn" type="button" class="btn btn-outline-danger">Delete</button>
+                                    </div>
+                                    <div class="col">
+                                        <button id="reset_btn" type="reset" class="btn btn-outline-info">Reset</button>
+                                        <h1></h1>
+                                    </div>
 
+                                </div>
                             </div>
+
                         </div>
+
 
                     </form>
                 </div>
@@ -256,7 +236,7 @@
                             <th scope="col">Gender</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="customer_Table">
 
                         </tbody>
                     </table>
@@ -268,34 +248,33 @@
 
     </section>
 
-
-
-
 <!--    /////////////////////// Item Page //////////////////////-->
 
     <section id="item_section">
 
         <div class="container">
-            <h1>Item Mange</h1>
+
             <div class="row">
                 <div class="col">
+                    <h1>Item Mange</h1>
+                    <br><h1></h1>
                     <form class="row g-3">
 
                         <div class="col-12">
-                            <label for="item_id" class="form-label">Item ID</label>
-                            <input type="number" class="form-control" id="item_id" >
+                            <label for="item_id_txt" class="form-label">Item ID</label>
+                            <input type="number" class="form-control" id="item_id_txt" >
                         </div>
                         <div class="col-12">
-                            <label for="item_name" class="form-label">Item Name</label>
-                            <input type="text" class="form-control" id="item_name" >
+                            <label for="item_name_txt" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="item_name_txt" >
                         </div>
                         <div class="col-12">
-                            <label for="item_price" class="form-label">Item Price</label>
-                            <input type="number" class="form-control" id="item_price">
+                            <label for="item_price_txt" class="form-label">Item Price</label>
+                            <input type="number" class="form-control" id="item_price_txt">
                         </div>
                         <div class="col-12">
-                            <label for="item_qty" class="form-label">Item Qty</label>
-                            <input type="number" class="form-control" id="item_qty">
+                            <label for="item_qty_txt" class="form-label">Item Qty</label>
+                            <input type="number" class="form-control" id="item_qty_txt">
                         </div>
 
 
@@ -308,16 +287,16 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-outline-primary">Save</button>
+                                    <button id="item_save_btn" type="button" class="btn btn-outline-primary">Save</button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-outline-success">Update</button>
+                                    <button id="item_update_btn" type="button" class="btn btn-outline-success">Update</button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    <button id="item_delete_btn" type="button" class="btn btn-outline-danger">Delete</button>
                                 </div>
                                 <div class="col">
-                                    <button type="reset" class="btn btn-outline-info">Reset</button>
+                                    <button id="item_reset_btn" type="reset" class="btn btn-outline-info">Reset</button>
                                     <h1></h1>
                                 </div>
 
@@ -344,7 +323,7 @@
                             <th scope="col">Item Qty</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="item_table">
 
                         </tbody>
                     </table>
@@ -356,16 +335,100 @@
 
     </section>
 
+    <!--    //////////////////////////////// Place Order Section ///////////////////////////-->
+
+    <section id="palce_order_section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Order Details</h1>
+                    <br>
+                    <div class="col-md-4">
+                        <label for="orderId">Order Id</label>
+                        <input type="text" class="form-control" id="orderId"  required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="customerOrder_Id" class="form-label">Customer Id</label>
+                        <select id="customerOrder_Id" class="form-select">
+                            <option selected></option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="order_Date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="order_Date">
+                    </div>
+
+                </div>
+                <div class="col">
+                    <h1>Cart</h1>
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Qty</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <h1>Select Item</h1>
+                    <br>
+                    <div class="col-md-4">
+                        <label for="item_description_select" class="form-label">Item</label>
+                        <select id="item_description_select" class="form-select">
+                            <option selected></option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="qtyOnHand">Qty On Hand</label>
+                        <input type="text" class="form-control" id="qtyOnHand"  required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="qty">Qty</label>
+                        <input type="text" class="form-control" id="qty"  required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <br>
+
+
+                </div>
+                <div class="col">
+                    <span>Total :</span><span>00.00</span><br><br>
+                    <button id="place_order_btn" type="button" class="btn btn-success">Place Order</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 <!--    //////////////////////////// Mange Order Section ///////////////////////////////-->
-
 
     <section id="manage_order_section">
 
         <div class="container">
-            <h1>Order Mange</h1>
+
             <div class="row">
                 <div class="col">
+                    <h1>Order Mange</h1>
+                    <br>
                     <div class="mb-3">
                         <label for="order_id" class="form-label">Order Id</label>
                         <select class="form-select" aria-label="Default select example" id="order_id">
@@ -435,98 +498,298 @@
     </section>
 
 
-<!--    //////////////////////////////// Place Order Section ///////////////////////////-->
-
-
-    <section id="palce_order_section">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1>Order Details</h1>
-                    <div class="col-md-4">
-                        <label for="orderId">Order Id</label>
-                        <input type="text" class="form-control" id="orderId"  required>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="customerOrder_Id" class="form-label">Customer Id</label>
-                        <select id="customerOrder_Id" class="form-select">
-                            <option selected></option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="order_Date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="order_Date">
-                    </div>
-
-                </div>
-                <div class="col">
-                    <h1>Cart</h1>
-                    <table class="table">
-
-                        <thead>
-                        <tr>
-                            <th scope="col">Item Id</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Qty</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <h1>Select Item</h1>
-                    <div class="col-md-4">
-                        <label for="itemId" class="form-label">Item</label>
-                        <select id="itemId" class="form-select">
-                            <option selected></option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description"  required>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="qtyOnHand">Qty On Hand</label>
-                        <input type="text" class="form-control" id="qtyOnHand"  required>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="qty">Qty</label>
-                        <input type="text" class="form-control" id="qty"  required>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <br>
-
-
-                </div>
-                <div class="col">
-                    <span>Total :</span><span>00.00</span><br><br>
-                    <button type="button" class="btn btn-success">Place Order</button>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
 </main>
+<script src="assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/jquery.min.js"></script>
+
+<!--//////  Clock Script ////-->
+<script>
+    function showTime(){
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        var session = "AM";
+
+        if(h == 0){
+            h = 12;
+        }
+
+        if(h > 12){
+            h = h - 12;
+            session = "PM";
+        }
+
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+
+        var time = h + ":" + m + ":" + s + " " + session;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
+
+        setTimeout(showTime, 1000);
+
+    }
+
+    showTime();
+</script>
+
+<!--///// Customer mange script-->
+<script>
+        // Save Customer
+
+        $("#custSaveBtn").on('click', () => {
+        // You can add your code here to handle the click event
+        // For example, you can retrieve values from input fields and perform actions
+        var customerId = $("#customerId").val();
+        var customerName = $("#customer_name").val();
+        var customerMail = $("#customer_mail").val();
+        var customerAddress = $("#customer_Address").val();
+        // Select the <select> element by its id
+        const genderSelect = document.getElementById('customer_Gender');
+        // Get the selected value
+        const selectedValue = genderSelect.value;
+
+
+        
+        // place order form customer Id option set ids with customers
+        var selectelment = document.getElementById("customerOrder_Id");
+            var ids = [];
+            ids=customerId;
+            console.log(ids)
+
+            for (let i = 0; i < ids.length; i++) {
+                var opation = document.createElement("option");
+                opation.text = ids[i];
+                selectelment.appendChild(opation)
+            }
+
+
+
+        var newRow = "<tr><th scope='row'>" + customerId + "</th><td>" + customerName + "</td><td>" + customerMail + "</td><td>" + customerAddress + "</td><td>" + selectedValue + "</td></tr>";
+        $("#customer_Table").append(newRow)
+
+
+        // reset button auto click save after
+        $("#reset_btn").click();
+    });
+
+        //row click and get values text fields
+        $("#customer_Table").on("click","tr", function (){
+            let id = $(this).find("th");
+            let data = $(this).find("td");
+
+
+            $("#customerId").val(id.eq(0).text());
+            $("#customer_name").val(data.eq(0).text());
+            $("#customer_mail").val(data.eq(1).text());
+            $("#customer_Address").val(data.eq(2).text());
+            $("#customer_Gender").val(data.eq(3).text());
+        });
+
+        // Update Customer
+
+        $("#custUpdateBtn").on('click', ()=>{
+            let customer_Id = $("#customerId").val();
+            let customer_name = $("#customer_name").val().trim();
+            let customer_mail = $('#customer_mail').val().trim();
+            let customer_adress = $('#customer_Address').val().trim();
+            let customer_gender = $('#customer_Gender').val().trim();
+
+
+            $('#customer_Table tr').each(function (){
+                let customerId = $(this).find('th').text();
+
+                if (customerId === customer_Id){
+                    $(this).find('td:nth-child(2)').text(customer_name);
+                    $(this).find('td:nth-child(3)').text(customer_mail);
+                    $(this).find('td:nth-child(4)').text(customer_adress);
+                    $(this).find('td:nth-child(5)').text(customer_gender)
+                }
+            })
+            $("#reset_btn").click();
+        });
+
+        // Delete Customer
+
+        $("#custdeleteBtn").on('click',()=>{
+            let customerId = $("#customerId").val();
+
+            $('#customer_Table tr').each(function() {
+                let customer_id = $(this).find('th').text();
+
+                if (customer_id === customerId) {
+                    // Remove the row if the student ID matches the value
+                    $(this).remove();
+                }
+            })
+            $("#reset_btn").click();
+        });
+
+
+
+
+</script>
+
+ <!--////////  Item Script //////////-->
+<script>
+
+    //Save Item
+    $("#item_save_btn").on('click', ()=>{
+        var item_id = $("#item_id_txt").val();
+        var item_description = $("#item_name_txt").val().trim();
+        var item_unitPrice = $("#item_price_txt").val().trim();
+        var item_qty = $("#item_qty_txt").val().trim();
+
+        var newRow = "<tr><th scope='row'>" + item_id + "</th><td>" + item_description + "</td><td>" + item_unitPrice + "</td><td>" + item_qty +  "</td></tr>";
+        $("#item_table").append(newRow)
+
+        $("#item_reset_btn").click();
+
+
+
+        //Order Form Item select field set items
+
+
+        const selectElement = document.getElementById("item_description_select");
+
+        // An array of item names
+        var index = 0;
+        const itemNames = [];
+        itemNames[index] = item_description;
+        index++;
+
+
+        // Loop through the item names and create an option for each one
+        itemNames.forEach(itemName => {
+            const option = document.createElement("option");
+            option.text = itemName;
+            // If you want to assign a value to each option, you can do so using option.value
+            // option.value = itemName;
+            selectElement.appendChild(option);
+        });
+
+    });
+
+    //row click and get values text fields
+    $("#item_table").on("click","tr",function (){
+        let id = $(this).find("th");
+        let data = $(this).find("td");
+
+        $("#item_id_txt").val(id.eq(0).text());
+        $("#item_name_txt").val(data.eq(0).text());
+        $("#item_price_txt").val(data.eq(1).text());
+        $("#item_qty_txt").val(data.eq(2).text());
+    })
+
+    //update Item
+    $("#item_update_btn").on('click', ()=>{
+        var item_id = $("#item_id_txt").val();
+        var item_description = $("#item_name_txt").val().trim();
+        var item_price = $("#item_price_txt").val().trim();
+        var item_qty = $("#item_qty_txt").val().trim()
+
+        $("#item_table tr").each(function (){
+            let itemId = $(this).find('th').text();
+
+            if (itemId === item_id ){
+                $(this).find('td:nth-child(2)').text(item_description);
+                $(this).find('td:nth-child(3)').text(item_price);
+                $(this).find('td:nth-child(4)').text(item_qty);
+            }
+        });
+        $("#item_reset_btn").click();
+    });
+
+    //Delete Item
+    $("#item_delete_btn").on('click',()=>{
+        let item_id = $("#item_id_txt").val();
+
+        $('#item_table tr').each(function (){
+            let items_ids = $(this).find('th').text();
+
+            if (item_id === items_ids){
+                $(this).remove();
+            }
+        });
+        $("#item_reset_btn").click();
+    });
+
+</script>
+
+<!--////////////// Place Order Script ////////-->
+<script>
+
+    $("#item_description_select").on('change', () => {
+        var item_description = $("#item_description_select").val();
+
+
+
+    });
+
+
+
+
+
+
+</script>
+
+
+
+
+<!--///////////////////   SPA (Single Page Application) ////////////////-->
+<script>
+    $("#customer_section").css('display', 'none');
+    $("#item_section").css('display', 'none');
+    $("#palce_order_section").css('display', 'none');
+    $("#manage_order_section").css('display', 'none');
+
+
+    $("#customer_nav").on('click', () =>{
+        $("#customer_section").css('display', 'block');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#items_nav").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'block');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#place_order_nav").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'block');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#manage_order_nav").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'block');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#home_nav").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'block')
+    });
+
+</script>
+
+
+
 
 </body>
 </html>
