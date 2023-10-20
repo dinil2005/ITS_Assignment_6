@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="assets/css/tbl.css">
     <link rel="stylesheet" href="assets/css/css.css">
 
+
+
 </head>
 
 <body>
@@ -374,7 +376,7 @@
                             <th scope="col">Qty</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cart_table">
 
                         </tbody>
                     </table>
@@ -402,6 +404,13 @@
                     <div class="col-md-4">
                         <label for="qty">Qty</label>
                         <input type="text" class="form-control" id="qty"  required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="unit_price">Unit Price</label>
+                        <input type="text" class="form-control" id="unit_price"  required>
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
@@ -499,247 +508,21 @@
 
 
 </main>
+
+
+
 <script src="assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/lib/jquery.min.js"></script>
-
-<!--//////  Clock Script ////-->
-<script>
-    function showTime(){
-        var date = new Date();
-        var h = date.getHours(); // 0 - 23
-        var m = date.getMinutes(); // 0 - 59
-        var s = date.getSeconds(); // 0 - 59
-        var session = "AM";
-
-        if(h == 0){
-            h = 12;
-        }
-
-        if(h > 12){
-            h = h - 12;
-            session = "PM";
-        }
-
-        h = (h < 10) ? "0" + h : h;
-        m = (m < 10) ? "0" + m : m;
-        s = (s < 10) ? "0" + s : s;
-
-        var time = h + ":" + m + ":" + s + " " + session;
-        document.getElementById("MyClockDisplay").innerText = time;
-        document.getElementById("MyClockDisplay").textContent = time;
-
-        setTimeout(showTime, 1000);
-
-    }
-
-    showTime();
-</script>
-
-<!--///// Customer mange script-->
-<script>
-        // Save Customer
-
-        $("#custSaveBtn").on('click', () => {
-        // You can add your code here to handle the click event
-        // For example, you can retrieve values from input fields and perform actions
-        var customerId = $("#customerId").val();
-        var customerName = $("#customer_name").val();
-        var customerMail = $("#customer_mail").val();
-        var customerAddress = $("#customer_Address").val();
-        // Select the <select> element by its id
-        const genderSelect = document.getElementById('customer_Gender');
-        // Get the selected value
-        const selectedValue = genderSelect.value;
-
-
-        
-        // place order form customer Id option set ids with customers
-        var selectelment = document.getElementById("customerOrder_Id");
-            var ids = [];
-            ids=customerId;
-            console.log(ids)
-
-            for (let i = 0; i < ids.length; i++) {
-                var opation = document.createElement("option");
-                opation.text = ids[i];
-                selectelment.appendChild(opation)
-            }
+<script src="Controller/ClockController.js"></script>
+<script type="module" src="Controller/CustomerController.js"></script>
+<script type="module" src="Controller/ItemController.js"></script>
+<script src="Controller/PlaceOrderController.js"></script>
 
 
 
-        var newRow = "<tr><th scope='row'>" + customerId + "</th><td>" + customerName + "</td><td>" + customerMail + "</td><td>" + customerAddress + "</td><td>" + selectedValue + "</td></tr>";
-        $("#customer_Table").append(newRow)
-
-
-        // reset button auto click save after
-        $("#reset_btn").click();
-    });
-
-        //row click and get values text fields
-        $("#customer_Table").on("click","tr", function (){
-            let id = $(this).find("th");
-            let data = $(this).find("td");
-
-
-            $("#customerId").val(id.eq(0).text());
-            $("#customer_name").val(data.eq(0).text());
-            $("#customer_mail").val(data.eq(1).text());
-            $("#customer_Address").val(data.eq(2).text());
-            $("#customer_Gender").val(data.eq(3).text());
-        });
-
-        // Update Customer
-
-        $("#custUpdateBtn").on('click', ()=>{
-            let customer_Id = $("#customerId").val();
-            let customer_name = $("#customer_name").val().trim();
-            let customer_mail = $('#customer_mail').val().trim();
-            let customer_adress = $('#customer_Address').val().trim();
-            let customer_gender = $('#customer_Gender').val().trim();
-
-
-            $('#customer_Table tr').each(function (){
-                let customerId = $(this).find('th').text();
-
-                if (customerId === customer_Id){
-                    $(this).find('td:nth-child(2)').text(customer_name);
-                    $(this).find('td:nth-child(3)').text(customer_mail);
-                    $(this).find('td:nth-child(4)').text(customer_adress);
-                    $(this).find('td:nth-child(5)').text(customer_gender)
-                }
-            })
-            $("#reset_btn").click();
-        });
-
-        // Delete Customer
-
-        $("#custdeleteBtn").on('click',()=>{
-            let customerId = $("#customerId").val();
-
-            $('#customer_Table tr').each(function() {
-                let customer_id = $(this).find('th').text();
-
-                if (customer_id === customerId) {
-                    // Remove the row if the student ID matches the value
-                    $(this).remove();
-                }
-            })
-            $("#reset_btn").click();
-        });
-
-
-
-
-</script>
-
- <!--////////  Item Script //////////-->
+// <!--///////////////////   SPA Apply(Single Page Application) ////////////////-->
 <script>
 
-    //Save Item
-    $("#item_save_btn").on('click', ()=>{
-        var item_id = $("#item_id_txt").val();
-        var item_description = $("#item_name_txt").val().trim();
-        var item_unitPrice = $("#item_price_txt").val().trim();
-        var item_qty = $("#item_qty_txt").val().trim();
-
-        var newRow = "<tr><th scope='row'>" + item_id + "</th><td>" + item_description + "</td><td>" + item_unitPrice + "</td><td>" + item_qty +  "</td></tr>";
-        $("#item_table").append(newRow)
-
-        $("#item_reset_btn").click();
-
-
-
-        //Order Form Item select field set items
-
-
-        const selectElement = document.getElementById("item_description_select");
-
-        // An array of item names
-        var index = 0;
-        const itemNames = [];
-        itemNames[index] = item_description;
-        index++;
-
-
-        // Loop through the item names and create an option for each one
-        itemNames.forEach(itemName => {
-            const option = document.createElement("option");
-            option.text = itemName;
-            // If you want to assign a value to each option, you can do so using option.value
-            // option.value = itemName;
-            selectElement.appendChild(option);
-        });
-
-    });
-
-    //row click and get values text fields
-    $("#item_table").on("click","tr",function (){
-        let id = $(this).find("th");
-        let data = $(this).find("td");
-
-        $("#item_id_txt").val(id.eq(0).text());
-        $("#item_name_txt").val(data.eq(0).text());
-        $("#item_price_txt").val(data.eq(1).text());
-        $("#item_qty_txt").val(data.eq(2).text());
-    })
-
-    //update Item
-    $("#item_update_btn").on('click', ()=>{
-        var item_id = $("#item_id_txt").val();
-        var item_description = $("#item_name_txt").val().trim();
-        var item_price = $("#item_price_txt").val().trim();
-        var item_qty = $("#item_qty_txt").val().trim()
-
-        $("#item_table tr").each(function (){
-            let itemId = $(this).find('th').text();
-
-            if (itemId === item_id ){
-                $(this).find('td:nth-child(2)').text(item_description);
-                $(this).find('td:nth-child(3)').text(item_price);
-                $(this).find('td:nth-child(4)').text(item_qty);
-            }
-        });
-        $("#item_reset_btn").click();
-    });
-
-    //Delete Item
-    $("#item_delete_btn").on('click',()=>{
-        let item_id = $("#item_id_txt").val();
-
-        $('#item_table tr').each(function (){
-            let items_ids = $(this).find('th').text();
-
-            if (item_id === items_ids){
-                $(this).remove();
-            }
-        });
-        $("#item_reset_btn").click();
-    });
-
-</script>
-
-<!--////////////// Place Order Script ////////-->
-<script>
-
-    $("#item_description_select").on('change', () => {
-        var item_description = $("#item_description_select").val();
-
-
-
-    });
-
-
-
-
-
-
-</script>
-
-
-
-
-<!--///////////////////   SPA (Single Page Application) ////////////////-->
-<script>
     $("#customer_section").css('display', 'none');
     $("#item_section").css('display', 'none');
     $("#palce_order_section").css('display', 'none');
