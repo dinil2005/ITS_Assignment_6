@@ -1,13 +1,12 @@
+import {ItemModel} from "../Model/ItemModel.js";
 import {item_db} from "../db/db.js";
-
-
 
 
 
 const LoadItemTable = () =>{
     $('#item_table').empty();
     item_db.map((item,index) =>{
-        var newRow = "<tr><th scope='row'>" + item.item_Id + "</th><td>" + item.item_Description + "</td><td>" + item.item_UnitPrice + "</td><td>" + item.ite_Qty +  "</td></tr>";
+        var newRow = "<tr><th scope='row'>" + item.item_Id + "</th><td>" + item.item_Description + "</td><td>" + item.item_UnitPrice + "</td><td>" + item.item_Qty +  "</td></tr>";
         $("#item_table").append(newRow)
     })
 }
@@ -20,12 +19,13 @@ $("#item_save_btn").on('click', ()=>{
     var item_qty = $("#item_qty_txt").val().trim();
 
 
-    let item_detail_object = {
-        item_Id:item_id,
-        item_Description:item_description,
-        item_UnitPrice:item_unitPrice,
-        ite_Qty:item_qty
-    }
+    // let item_detail_object = {
+    //     item_Id:item_id,
+    //     item_Description:item_description,
+    //     item_UnitPrice:item_unitPrice,
+    //     ite_Qty:item_qty
+    // }
+     let item_detail_object = new ItemModel(item_id,item_description,item_unitPrice,item_qty)
 
     item_db.push(item_detail_object)
 
@@ -76,15 +76,29 @@ $("#item_update_btn").on('click', ()=>{
     var item_price = $("#item_price_txt").val().trim();
     var item_qty = $("#item_qty_txt").val().trim()
 
-    $("#item_table tr").each(function (){
-        let itemId = $(this).find('th').text();
+    // let item_detail_object = {
+    //     item_Id:item_id,
+    //     item_Description:item_description,
+    //     item_UnitPrice:item_price,
+    //     ite_Qty:item_qty
+    // }
 
-        if (itemId === item_id ){
-            $(this).find('td:nth-child(2)').text(item_description);
-            $(this).find('td:nth-child(3)').text(item_price);
-            $(this).find('td:nth-child(4)').text(item_qty);
-        }
-    });
+    let item_detail_object = new ItemModel(item_id,item_description,item_price,item_qty)
+
+    let update_item_index = item_db.findIndex(item => item.item_Id === item_id);
+    item_db[update_item_index] = item_detail_object;
+
+    LoadItemTable();
+
+    // $("#item_table tr").each(function (){
+    //     let itemId = $(this).find('th').text();
+    //
+    //     if (itemId === item_id ){
+    //         $(this).find('td:nth-child(2)').text(item_description);
+    //         $(this).find('td:nth-child(3)').text(item_price);
+    //         $(this).find('td:nth-child(4)').text(item_qty);
+    //     }
+    // });
     $("#item_reset_btn").click();
 });
 
@@ -92,13 +106,18 @@ $("#item_update_btn").on('click', ()=>{
 $("#item_delete_btn").on('click',()=>{
     let item_id = $("#item_id_txt").val();
 
-    $('#item_table tr').each(function (){
-        let items_ids = $(this).find('th').text();
 
-        if (item_id === items_ids){
-            $(this).remove();
-        }
-    });
+    let delete_item_index = item_db.findIndex(item => item.item_Id === item_id);
+    item_db.splice(delete_item_index ,1);
+
+    LoadItemTable();
+    // $('#item_table tr').each(function (){
+    //     let items_ids = $(this).find('th').text();
+    //
+    //     if (item_id === items_ids){
+    //         $(this).remove();
+    //     }
+    // });
     $("#item_reset_btn").click();
 });
 
