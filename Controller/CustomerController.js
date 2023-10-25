@@ -22,26 +22,25 @@ $("#custSaveBtn").on('click', () => {
     // Get the selected value
     const selectedValue = genderSelect.value;
 
+    if (validate(customerId,'Customer Id') && validate(customerName,"Customer Name") && validate(customerMail,'Customer Mail')
+        && validate(customerAddress,'Customer Address') && validate(selectedValue,"Gender")){
+        let customer_Details_Object = new CustomerModel(customerId,customerName,customerMail,customerAddress,selectedValue)   //Constructor Through Data Send
 
-    //Create Object
-    // let customer_Details_Object = {
-    //     customer_Id:customerId,
-    //     customer_Name: customerName,
-    //     customer_Mail: customerMail,
-    //     customer_Address: customerAddress,
-    //     customer_Gender: selectedValue
-    // }
+        //customer_db Array Push customer Details Object
+        customer_db.push(customer_Details_Object);
+        Swal.fire(
+            'Success!',
+            'Customer Saved Successfully!',
+            'success'
+        )
 
-    //Constructor Through Data Send
-    let customer_Details_Object = new CustomerModel(customerId,customerName,customerMail,customerAddress,selectedValue)
+        // Call Function
+        LoadCustomerData();
 
+        // reset button auto click save after
+        $("#reset_btn").click();
+    }
 
-    //customer_db Array Push customer Details Object
-    customer_db.push(customer_Details_Object);
-
-
-    // Call Function
-    LoadCustomerData();
 
     // place order form customer Id option set ids with customers
     var selectelment = document.getElementById("customerOrder_Id");
@@ -55,8 +54,7 @@ $("#custSaveBtn").on('click', () => {
         selectelment.appendChild(opation)
     }
 
-    // reset button auto click save after
-    $("#reset_btn").click();
+
 });
 
 //row click and get values text fields
@@ -81,53 +79,52 @@ $("#custUpdateBtn").on('click', ()=>{
     let customer_adress = $('#customer_Address').val().trim();
     let customer_gender = $('#customer_Gender').val().trim();
 
-    //Create Object
-    // let customer_Details_Object = {
-    //     customer_Id:customer_Id,
-    //     customer_Name: customer_name,
-    //     customer_Mail: customer_mail,
-    //     customer_Address: customer_adress,
-    //     customer_Gender: customer_gender
-    // }
 
-    //Constructor Through Data Send
-    let customer_Details_Object = new CustomerModel(customer_Id,customer_name,customer_mail,customer_adress,customer_gender)
+    if (validate(customer_Id,'Customer Id') && validate(customer_name,'Customer Name') && validate(customer_mail,'Customer Mail')
+        && validate(customer_adress,'Customer Address') && validate(customer_gender,'Customer Gender')){
+        //Constructor Through Data Send
+        let customer_Details_Object = new CustomerModel(customer_Id,customer_name,customer_mail,customer_adress,customer_gender)
 
-    // Update  Customer Index Number find
-    let index = customer_db.findIndex(item => item.customer_Id === customer_Id);
-    customer_db[index] = customer_Details_Object;
+        // Update  Customer Index Number find
+        let index = customer_db.findIndex(item => item.customer_Id === customer_Id);
+        customer_db[index] = customer_Details_Object;
+        Swal.fire(
+            'Success!',
+            'Customer Update Successfully!',
+            'success'
+        )
+        // Table Lode
+        LoadCustomerData();
+        $("#reset_btn").click();
+    }
 
-    // Table Lode
-    LoadCustomerData();
-
-    // $('#customer_Table tr').each(function (){
-    //     let customerId = $(this).find('th').text();
-    //
-    //     if (customerId === customer_Id){
-    //         $(this).find('td:nth-child(2)').text(customer_name);
-    //         $(this).find('td:nth-child(3)').text(customer_mail);
-    //         $(this).find('td:nth-child(4)').text(customer_adress);
-    //         $(this).find('td:nth-child(5)').text(customer_gender)
-    //     }
-    // })
-
-    $("#reset_btn").click();
 });
 
 // Delete Customer
-
 $("#custdeleteBtn").on('click',()=>{
     let customerId = $("#customerId").val();
 
-    // Delete Customer Index Find
-    let delete_Customer_Index = customer_db.findIndex(item => item.customer_Id === customerId);
-    // Customer Index Delete
-    customer_db.splice(delete_Customer_Index , 1);
-
+    let delete_Customer_Index = customer_db.findIndex(item => item.customer_Id === customerId); // Delete Customer Index Find
+    customer_db.splice(delete_Customer_Index , 1);    // Customer Index Delete
+    Swal.fire(
+        'Success!',
+        'Customer Delete Successfully!',
+        'success'
+    )
     LoadCustomerData();
 
     $("#reset_btn").click();
 });
 
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
 
 

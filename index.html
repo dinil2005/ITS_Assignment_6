@@ -12,7 +12,7 @@
     <meta name="author" content="Dinil_DasmSitH">
 
     <link rel="stylesheet" href="assets/bootstrap-5.3.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap-5.3.1-dist/style/css.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="assets/css/clock.css">
     <link rel="stylesheet" href="assets/css/tbl.css">
     <link rel="stylesheet" href="assets/css/css.css">
-
-
 
 </head>
 
@@ -31,7 +29,7 @@
 <header>
     <nav>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index: 999999999999999" >
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <!-- Toggle button -->
@@ -88,67 +86,15 @@
 
     <section id="home_section">
 
-        <div class="row">
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="assets/img/service.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Customer</h5>
-                                <p class="card-text"></p>
-                                <p class="card-text"><small class="text-muted">190</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0" >
-                        <div class="col-md-4">
-                            <img src="assets/img/groceries.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8" >
-                            <div class="card-body">
-                                <h5 class="card-title">Items</h5>
-                                <p class="card-text"></p>
-                                <p class="card-text"><small class="text-muted">54</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="assets/img/order.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Orders</h5>
-                                <p class="card-text"></p>
-                                <p class="card-text"><small class="text-muted">49</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="hero">
+            <header id="header">
+                <a id="logo" href="#">logo</a>
+                <nav>
+                    <a id="menu-icon">&#8801;</a>
+                </nav>
+            </header>
 
-        </div>
-        <div class="row">
-
-
-            <div class="col">
-                <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-            </div>
-
-
-
-        </div>
+        </section>
 
 
     </section>
@@ -347,7 +293,7 @@
                     <br>
                     <div class="col-md-4">
                         <label for="orderId">Order Id</label>
-                        <input type="text" class="form-control" id="orderId"  required>
+                        <h4 id="orderId">001</h4>
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
@@ -361,7 +307,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="order_Date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="order_Date">
+                        <h5 id="order_Date"></h5>
                     </div>
 
                 </div>
@@ -416,11 +362,19 @@
                         </div>
                     </div>
                     <br>
-
+                    <button id="cart_btn" type="button" class="btn btn-success">Add Cart</button>
 
                 </div>
                 <div class="col">
-                    <span>Total :</span><span>00.00</span><br><br>
+
+                    <span>Total :</span><span id="order_total">00.00</span><br><br>
+                    <label for="cash">Cash</label>
+                    <input type="text" class="form-control" id="cash"  required>
+                    <label for="balance">Balance</label>
+                    <input type="text" class="form-control" id="balance"  required>
+                    <label for="discount">Discount</label>
+                    <input type="text" class="form-control" id="discount"  required>
+                    <br>
                     <button id="place_order_btn" type="button" class="btn btn-success">Place Order</button>
                 </div>
             </div>
@@ -483,7 +437,7 @@
                         <button type="button" class="btn btn-outline-primary">search</button>
                     </div>
                     <br><br>
-                    <table class="table">
+                    <table class="table" >
 
                         <thead>
                         <tr>
@@ -492,7 +446,7 @@
                             <th scope="col">Date</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="mange_order_table">
 
                         </tbody>
                     </table>
@@ -500,7 +454,26 @@
 
             </div>
 
+            <br>
+<!--            <div class="col">-->
+<!--                <table class="table" >-->
+
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">Customer Id</th>-->
+<!--                        <th scope="col">Item Description</th>-->
+<!--                        <th scope="col">Unit Price</th>-->
+<!--                        <th scope="col">Qty</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody id="place_order_table">-->
+
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
         </div>
+
+
 
 
 
@@ -516,11 +489,12 @@
 <script src="Controller/ClockController.js"></script>
 <script type="module" src="Controller/CustomerController.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>
-<script src="Controller/PlaceOrderController.js"></script>
+<script type="module" src="Controller/PlaceOrderController.js"></script>
+<script type="module" src="Controller/OrderMangeController.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-
-// <!--///////////////////   SPA Apply(Single Page Application) ////////////////-->
+ <!--///////////////////   SPA Apply(Single Page Application) ////////////////-->
 <script>
 
     $("#customer_section").css('display', 'none');

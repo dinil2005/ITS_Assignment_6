@@ -19,25 +19,22 @@ $("#item_save_btn").on('click', ()=>{
     var item_qty = $("#item_qty_txt").val().trim();
 
 
-    // let item_detail_object = {
-    //     item_Id:item_id,
-    //     item_Description:item_description,
-    //     item_UnitPrice:item_unitPrice,
-    //     ite_Qty:item_qty
-    // }
-     let item_detail_object = new ItemModel(item_id,item_description,item_unitPrice,item_qty)
+    if (validate(item_id,'Item Id') && validate(item_description,'Item Description') && validate(item_unitPrice,'Item Unit Price') && validate(item_qty,'Item Qty')){
+        let item_detail_object = new ItemModel(item_id,item_description,item_unitPrice,item_qty)
+        item_db.push(item_detail_object)
+        Swal.fire(
+            'Success!',
+            'Item Saved Successfully!',
+            'success'
+        )
 
-    item_db.push(item_detail_object)
+        LoadItemTable();
 
-    LoadItemTable();
-
-    $("#item_reset_btn").click();
-
+        $("#item_reset_btn").click();
+    }
 
 
     //Order Form Item select field set items
-
-
     const selectElement = document.getElementById("item_description_select");
 
     // An array of item names
@@ -76,30 +73,24 @@ $("#item_update_btn").on('click', ()=>{
     var item_price = $("#item_price_txt").val().trim();
     var item_qty = $("#item_qty_txt").val().trim()
 
-    // let item_detail_object = {
-    //     item_Id:item_id,
-    //     item_Description:item_description,
-    //     item_UnitPrice:item_price,
-    //     ite_Qty:item_qty
-    // }
 
-    let item_detail_object = new ItemModel(item_id,item_description,item_price,item_qty)
+    if (validate(item_id,'Item Id') && validate(item_description,'Item Description') && validate(item_price,'Item Price')
+        && validate(item_qty,'Item Qty')){
 
-    let update_item_index = item_db.findIndex(item => item.item_Id === item_id);
-    item_db[update_item_index] = item_detail_object;
+        let item_detail_object = new ItemModel(item_id,item_description,item_price,item_qty)
 
-    LoadItemTable();
+        let update_item_index = item_db.findIndex(item => item.item_Id === item_id);
+        item_db[update_item_index] = item_detail_object;
+        Swal.fire(
+            'Success!',
+            'Item Update Successfully!',
+            'success'
+        )
+        LoadItemTable();
 
-    // $("#item_table tr").each(function (){
-    //     let itemId = $(this).find('th').text();
-    //
-    //     if (itemId === item_id ){
-    //         $(this).find('td:nth-child(2)').text(item_description);
-    //         $(this).find('td:nth-child(3)').text(item_price);
-    //         $(this).find('td:nth-child(4)').text(item_qty);
-    //     }
-    // });
-    $("#item_reset_btn").click();
+        $("#item_reset_btn").click();
+    }
+
 });
 
 //Delete Item
@@ -109,15 +100,24 @@ $("#item_delete_btn").on('click',()=>{
 
     let delete_item_index = item_db.findIndex(item => item.item_Id === item_id);
     item_db.splice(delete_item_index ,1);
-
+    Swal.fire(
+        'Success!',
+        'Item Delete Successfully!',
+        'success'
+    )
     LoadItemTable();
-    // $('#item_table tr').each(function (){
-    //     let items_ids = $(this).find('th').text();
-    //
-    //     if (item_id === items_ids){
-    //         $(this).remove();
-    //     }
-    // });
     $("#item_reset_btn").click();
 });
+
+
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
 
