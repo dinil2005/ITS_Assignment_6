@@ -3,11 +3,11 @@ section{
     height: 100%;
 }
 #pos{
-    color: #22c422;
+    color: #00fd00;
 }
 
 #home_nav,#items_nav,#manage_order_nav,#place_order_nav,#home_nav,#customer_nav{
-    color: #0a540a;
+    color: #00ff00;
     font-weight: bold;
     font-size: 18px;
     z-index: 999999;

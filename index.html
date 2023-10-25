@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/clock.css">
     <link rel="stylesheet" href="assets/css/tbl.css">
     <link rel="stylesheet" href="assets/css/css.css">
+    <link rel="stylesheet" href="assets/css/mobilNav.css">
 
 </head>
 
@@ -27,29 +28,23 @@
 
 <!--/////////////////// Navigation Bar /////////////////////////////-->
 <header>
-    <nav>
+    <nav id="navi">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index: 999999999999999" >
+
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <!-- Toggle button -->
-                <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                >
-                    <i class="fas fa-bars"></i>
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+
                 </button>
 
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
                     <a class="navbar-brand mt-2 mt-lg-0" >
-                       <h1 id="pos">POS</h1>
+<!--                       <h1 id="pos">POS</h1>-->
                     </a>
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -76,7 +71,35 @@
             </div>
         </nav>
 
+
+        <div id="mobile_navi">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li class="nav-item">
+                    <a class="nav-link" id="home_nav_m">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="customer_nav_m" >Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="items_nav_m" >Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="place_order_nav_m">Place Order</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="manage_order_nav_m">Mange Order</a>
+                </li>
+            </div>
+
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer; color: #00ff00; z-index: 99999999999999;" onclick="openNav()">&#9776; POS</span>
+            </div>
+        </div>
+
     </nav>
+
+
 </header>
 
 
@@ -88,7 +111,7 @@
 
         <section class="hero">
             <header id="header">
-                <a id="logo" href="#">logo</a>
+                <a id="logo" href="#"></a>
                 <nav>
                     <a id="menu-icon">&#8801;</a>
                 </nav>
@@ -489,12 +512,15 @@
 <script type="module" src="Controller/PlaceOrderController.js"></script>
 <script type="module" src="Controller/OrderMangeController.js"></script>
 <link   type="module" rel="stylesheet" href="Controller/OrderMangeController.js">
+<script src="Controller/mobileNav.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
  <!--///////////////////   SPA Apply(Single Page Application) ////////////////-->
 <script>
+
+
 
     $("#customer_section").css('display', 'none');
     $("#item_section").css('display', 'none');
@@ -542,10 +568,61 @@
         $("#home_section").css('display', 'block')
     });
 
+
+
+    /////////  Mobile Nav
+
+    $("#customer_nav_m").on('click', () =>{
+        $("#customer_section").css('display', 'block');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#items_nav_m").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'block');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#place_order_nav_m").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'block');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#manage_order_nav_m").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'block');
+        $("#home_section").css('display', 'none')
+    });
+
+    $("#home_nav_m").on('click', () =>{
+        $("#customer_section").css('display', 'none');
+        $("#item_section").css('display', 'none');
+        $("#palce_order_section").css('display', 'none');
+        $("#manage_order_section").css('display', 'none');
+        $("#home_section").css('display', 'block')
+    });
+
 </script>
 
 
+<style>
+    @media (max-width: 992px) {
+        #mobile_navi{
+            display: block;
+        }
+    }
 
+</style>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 body{
     background-color: white;
     font-family: 'Candal', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden;overflow-y: hidden;
 }
 section{
     width: 100%;
@@ -12,6 +12,10 @@ section{
     margin-left: 22px;
     border-radius: 22px;
 
+}
+
+div#navbarSupportedContent {
+    background-color: transparent;
 }
 
 .hero{
@@ -47,8 +51,9 @@ section{
 
 
 
+
 .hero {
-    top: -215px;
+    top: -271px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -57,8 +62,31 @@ section{
     padding: 1em;
     box-sizing: border-box;
     color: white;
-    background: url(https://www.guestarticlehouse.com/wp-content/uploads/2022/09/How-Late-Is-The-Closest-Grocery-Store-Open.jpg) center center no-repeat;
+    background: url(https://img.freepik.com/free-photo/freshness-organic-vegetables-healthy-eating-vegetarian-food-variation-generated-by-artificial-intelligence_25030-60654.jpg?t=st=1698265656~exp=1698269256~hmac=18fd712c2980285ed179d70d83de7e256bfb84e03a4111fea81318c47dfca42d&w=1060) center center no-repeat;
     background-size: cover;
+    animation: imageChange 15s infinite; /* 5s per image with 3 images */
+}
+
+@keyframes imageChange {
+    0%, 100% {
+        background-image: url(https://img.freepik.com/free-photo/freshness-organic-vegetables-healthy-eating-vegetarian-food-variation-generated-by-artificial-intelligence_25030-60654.jpg?t=st=1698265656~exp=1698269256~hmac=18fd712c2980285ed179d70d83de7e256bfb84e03a4111fea81318c47dfca42d&w=1060);
+    }
+    33.33% {
+        background-image: url(https://img.freepik.com/free-photo/fresh-autumn-veggies-wooden-table-healthy-meal-generative-ai_188544-8677.jpg?t=st=1698265312~exp=1698268912~hmac=ec926da5e104880b22faff960c126289088b5f297dae37d6668d6c08a57b673e&w=1060);
+    }
+    66.66% {
+        /*background-image: url(https://img.freepik.com/free-photo/painting-green-vegetable-red-tomato_1340-25549.jpg?t=st=1698266285~exp=1698269885~hmac=90d35345db116272749a46cf643f96b202d8573cef8d5baa5e852211c653c694&w=1060);*/
+    }
+}
+
+
+
+#mobile_navi {
+    position: relative;
+    left: -5px;
+    top: -34px;
+    z-index: 9999999999999999;
+    display: none;
 }
 
 
