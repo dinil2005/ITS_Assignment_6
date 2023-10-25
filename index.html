@@ -404,7 +404,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date">
+                        <h3 id="date">00/00/0000</h3>
                     </div>
 
                     <div class="container">
@@ -413,16 +413,13 @@
                         </div>
                         <div class="row">
 
+<!--                            <div class="col">-->
+<!--                                <button type="button" class="btn btn-outline-success">Update</button>-->
+<!--                            </div>-->
                             <div class="col">
-                                <button type="button" class="btn btn-outline-success">Update</button>
+                                <button type="button" class="btn btn-outline-danger" id="oderMangeDeleteBtn">Delete</button>
                             </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-outline-danger">Delete</button>
-                            </div>
-                            <div class="col">
-                                <button type="reset" class="btn btn-outline-info">Reset</button>
-                            </div>
-                          <h1></h1>
+
                         </div>
                     </div>
 
@@ -491,7 +488,9 @@
 <script type="module" src="Controller/ItemController.js"></script>
 <script type="module" src="Controller/PlaceOrderController.js"></script>
 <script type="module" src="Controller/OrderMangeController.js"></script>
+<link   type="module" rel="stylesheet" href="Controller/OrderMangeController.js">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
  <!--///////////////////   SPA Apply(Single Page Application) ////////////////-->
