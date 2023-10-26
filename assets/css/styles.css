@@ -1,7 +1,7 @@
 body{
     background-color: white;
     font-family: 'Candal', sans-serif;
-    overflow-x: hidden;overflow-y: hidden;
+    overflow-x: hidden;
 }
 section{
     width: 100%;
@@ -9,14 +9,20 @@ section{
 }
 .col{
     background-color:#E4F1FF;
-    margin-left: 22px;
+    margin: 20px;
+    margin-top: 22px;
     border-radius: 22px;
 
 }
+#selctItem>div {
+    display: inline-block;
+}
+
 
 div#navbarSupportedContent {
     background-color: transparent;
 }
+
 
 .hero{
 
