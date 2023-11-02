@@ -11,15 +11,13 @@ const LoadMangeOrderData = () =>{
         $("#mange_order_table").append(newRow)
     })
 }
-
-const LoadPlaceOrderData = () =>{
-    $('#place_order_table').empty();// Customer Table Clean
-    place_order_db.map((item,index) =>{
-        var newRow = "<tr><th scope='row'>" + item.customerId + "</th><td>" + item.itemDescription + "</td><td>" + item.unitPrice + "</td><td>" + item.qtyOrder +"</td></tr>";
-        $("#place_order_table").append(newRow)
+const LoadItemTable = () =>{
+    $('#item_table').empty();
+    item_db.map((item,index) =>{
+        var newRow = "<tr><th scope='row'>" + item.item_Id + "</th><td>" + item.item_Description + "</td><td>" + item.item_UnitPrice + "</td><td>" + item.item_Qty +  "</td></tr>";
+        $("#item_table").append(newRow)
     })
 }
-
 function clearItemSection() {
     $("#item_description_select").val('select the item');
     $("#qtyOnHand").val('');
@@ -34,7 +32,10 @@ function clearItemSection() {
 // Initialize the total as a number
 var total = 0;
 
+
+
 $("#cart_btn").on('click', () => {
+
     var item_description = $("#item_description_select").val();
     var unit_price = parseFloat($("#unit_price").val());
     var qty = parseInt($("#qty").val());
@@ -49,7 +50,21 @@ $("#cart_btn").on('click', () => {
     // Update the total
     total += unit_price * qty;
     document.getElementById("order_total").textContent = total; // Update the content of the "order_total" element
+
+
+    // Cart Add item After Item Table Qty Update
+    let updateItemQtyIndex = item_db.findIndex(item => item.item_Description === item_description);
+    let qtyOnHand = item_db[updateItemQtyIndex].item_Qty
+    var updatedItemQty = qtyOnHand - qty;
+
+    item_db[updateItemQtyIndex].item_Qty = updatedItemQty;
+    LoadItemTable();
+
+
+
+
 });
+
 
 
 var cashInput = document.getElementById("cash");// Get the input element with the id "cash"
@@ -86,6 +101,7 @@ $("#place_order_btn").on('click', () => {
             'success'
         )
         $("#cart_table").empty();
+        clear_fields();
     }
 
 
@@ -150,6 +166,12 @@ function validate(value, field_name){
         return false;
     }
     return true;
+}
+
+function clear_fields() {
+    $('#customerOrder_Id').val("");
+    $('#cash').val('');
+    $("#balance").val("")
 }
 
 

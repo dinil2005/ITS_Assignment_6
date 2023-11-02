@@ -27,6 +27,11 @@ div#navbarSupportedContent {
 .hero{
 
 }
+.btn {
+    border-width: 2px;
+    margin-left: 22px;
+
+}
 
 
 
@@ -104,13 +109,13 @@ div#navbarSupportedContent {
     margin-bottom: 1em;
 }
 
-.button {
-    padding: .5em .67em;
-    color: white;
-    text-decoration: none;
-    border: .1em solid white;
+/*.button {*/
+/*    padding: .5em .67em;*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    border: .1em solid white;*/
 
-}
+/*}*/
 
 .button-primary {
     color: black;
