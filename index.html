@@ -74,6 +74,7 @@
 
 
         <div id="mobile_navi">
+
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <li class="nav-item">
@@ -168,19 +169,16 @@
                                 </div>
                                 <div class="row" >
 
-                                    <div class="col">
-                                        <button id="custSaveBtn" type="button"  class="btn btn-outline-primary" >Save</button>
-                                    </div>
-                                    <div class="col">
-                                        <button id="custUpdateBtn" type="button" class="btn btn-outline-success">Update</button>
-                                    </div>
-                                    <div class="col">
-                                        <button id="custdeleteBtn" type="button" class="btn btn-outline-danger">Delete</button>
-                                    </div>
-                                    <div class="col">
-                                        <button id="reset_btn" type="reset" class="btn btn-outline-info">Reset</button>
+
+                                        <button id="custSaveBtn" type="button"  class="btn btn-outline-primary col-11" >Save</button>
+
+                                        <button id="custUpdateBtn" type="button" class="btn btn-outline-success col-5">Update</button>
+
+                                        <button id="custdeleteBtn" type="button" class="btn btn-outline-danger col-5">Delete</button>
+
+                                        <button id="reset_btn" type="reset" class="btn btn-outline-info col-2" style="display: none">Reset</button>
                                         <h1></h1>
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -194,8 +192,8 @@
                 <div class="col col-sm-12 col-lg-6 "  >
                     <br>
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary">search</button>
+                        <input id="customer_searchTxt" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-outline-primary" id="customerSearchBtn">search</button>
                     </div>
                     <br>
                     <table class="table">
@@ -258,22 +256,22 @@
                                 <br>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <button id="item_save_btn" type="button" class="btn btn-outline-primary">Save</button>
-                                </div>
-                                <div class="col">
-                                    <button id="item_update_btn" type="button" class="btn btn-outline-success">Update</button>
-                                </div>
-                                <div class="col">
-                                    <button id="item_delete_btn" type="button" class="btn btn-outline-danger">Delete</button>
-                                </div>
-                                <div class="col">
-                                    <button id="item_reset_btn" type="reset" class="btn btn-outline-info">Reset</button>
+
+                                    <button id="item_save_btn" type="button" class="btn btn-outline-primary col-11">Save</button>
+
+
+                                    <button id="item_update_btn" type="button" class="btn btn-outline-success col-5">Update</button>
+
+
+                                    <button id="item_delete_btn" type="button" class="btn btn-outline-danger col-5">Delete</button>
+
+
+                                    <button id="item_reset_btn" type="reset" class="btn btn-outline-info col-3" style="display: none">Reset</button>
                                     <h1></h1>
                                 </div>
 
                             </div>
-                        </div>
+
 
                     </form>
                 </div>
@@ -281,8 +279,8 @@
                 <div class="col col-sm-12 col-lg-6">
                     <br>
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary">search</button>
+                        <input  id="item_search_Txt" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-outline-primary" id="item_search_btn">search</button>
                     </div>
                     <br>
                     <table class="table">
@@ -312,7 +310,7 @@
     <section id="palce_order_section">
         <div class="container">
             <div class="row">
-                <div class="col col-sm-12 col-lg-12">
+                <div class="col col-sm-14 col-lg-12">
                     <h1>Order Details</h1>
                     <br>
                     <div class="col-md-4">
@@ -399,8 +397,6 @@
                     <input type="text" class="form-control" id="cash"  required>
                     <label for="balance">Balance</label>
                     <input type="text" class="form-control" id="balance"  required>
-                    <label for="discount">Discount</label>
-                    <input type="text" class="form-control" id="discount"  required>
                     <br>
                     <button id="place_order_btn" type="button" class="btn btn-success">Place Order</button>
                 </div>
@@ -416,7 +412,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col col-sm-11 col-md-11" id="orderMangeDiv">
+                <div class="col col-xl-4 col-md-12 col-sm-11" id="orderMangeDiv">
                     <h1>Order Mange</h1>
                     <br>
                     <div class="mb-3 mb-sm-2">
@@ -454,11 +450,11 @@
 
                 </div>
 
-                <div class="col col-sm-11 col-md-11">
+                <div class="col col-xl-7 col-md-12 col-sm-11 col-11">
                     <br>
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary">search</button>
+                        <input id="mange_order_search_Txt" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button id="mange_order_search_btn" type="button" class="btn btn-outline-primary">search</button>
                     </div>
                     <br><br>
                     <table class="table" >
@@ -627,6 +623,7 @@
     }
 
 </style>
+
 
 </body>
 </html>

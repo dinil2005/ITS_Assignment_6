@@ -13,10 +13,64 @@ section{
     margin-top: 22px;
     border-radius: 22px;
 
+
 }
 #selctItem>div {
     display: inline-block;
 }
+#custUpdateBtn,#custdeleteBtn,#item_delete_btn,#item_update_btn{
+    display: none;
+}
+/* Common button styles */
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Primary button style */
+.btn-outline-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+/* Success button style */
+.btn-outline-success {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+}
+
+/* Danger button style */
+.btn-outline-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+}
+
+/* Info button style */
+.btn-outline-info {
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+}
+
+/* Style for Reset button */
+#item_reset_btn {
+    background-color: #6c757d;
+    color: #fff;
+    border: 1px solid #6c757d;
+    display: none;
+}
+
+/* Hover effect for all buttons */
+.btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+
 
 
 div#navbarSupportedContent {
@@ -31,6 +85,39 @@ div#navbarSupportedContent {
     border-width: 2px;
     margin-left: 22px;
 
+}
+/* Style for the input group container */
+.input-group {
+    display: flex;
+    max-width: 300px; /* Adjust the width as needed */
+    margin: 0 auto;
+}
+
+/* Style for the search input */
+#customer_searchTxt,#item_search_Txt,#mange_order_search_Txt {
+    margin: -17px;
+    flex: 1;
+    border: 2px solid #3498db; /* Change the border color as desired */
+    border-radius: 5px; /* Adjust the border radius for rounded corners */
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Style for the search button */
+#customerSearchBtn,#item_search_btn,#mange_order_search_btn {
+    margin: -17px;
+    background-color: #3498db; /* Change the button background color */
+    border: none;
+    border-radius: 5px; /* Adjust the border radius to match the input */
+    color: #ffffff; /* Text color */
+    padding: 10px 20px; /* Adjust padding for button size */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect for the button */
+#customerSearchBtn:hover {
+    background-color: #2581c2; /* Change the button background color on hover */
 }
 
 

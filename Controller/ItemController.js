@@ -1,5 +1,5 @@
 import {ItemModel} from "../Model/ItemModel.js";
-import {item_db} from "../db/db.js";
+import {customer_db, item_db} from "../db/db.js";
 
 
 
@@ -86,8 +86,12 @@ $("#item_update_btn").on('click', ()=>{
             'Item Update Successfully!',
             'success'
         )
-        LoadItemTable();
 
+        $('#item_save_btn').css('display', 'block');
+        $('#item_update_btn').css('display','none');
+        $('#item_delete_btn').css('display','none');
+
+        LoadItemTable();
         $("#item_reset_btn").click();
     }
 
@@ -105,9 +109,32 @@ $("#item_delete_btn").on('click',()=>{
         'Item Delete Successfully!',
         'success'
     )
+
+    $('#item_save_btn').css('display', 'block');
+    $('#item_update_btn').css('display','none');
+    $('#item_delete_btn').css('display','none');
+
     LoadItemTable();
     $("#item_reset_btn").click();
 });
+
+
+//Search Item...
+$('#item_search_btn').on('click', () =>{
+    var itemId = $('#item_search_Txt').val();
+
+    let search_Item_Index = item_db.findIndex(item => item.item_Id === itemId);
+
+    $('#item_table').empty();
+
+    var newRow = "<tr><th scope='row'>" + item_db[search_Item_Index].item_Id + "</th><td>" + item_db[search_Item_Index].item_Description + "</td><td>" + item_db[search_Item_Index].item_UnitPrice + "</td><td>" + item_db[search_Item_Index].item_Qty +  "</td></tr>";
+    $('#item_table').append(newRow);
+})
+
+$('#item_search_Txt').on('click', () =>{
+    LoadItemTable();
+})
+
 
 
 function validate(value, field_name){
@@ -121,3 +148,8 @@ function validate(value, field_name){
     return true;
 }
 
+$("#item_table").on("click", "tr", function() {
+    $('#item_save_btn').css('display', 'none');
+    $('#item_update_btn').css('display','block');
+    $('#item_delete_btn').css('display','block');
+});

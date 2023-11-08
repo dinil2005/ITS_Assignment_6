@@ -37,6 +37,7 @@ $("#custSaveBtn").on('click', () => {
         // Call Function
         LoadCustomerData();
 
+
         // reset button auto click save after
         $("#reset_btn").click();
     }
@@ -95,6 +96,9 @@ $("#custUpdateBtn").on('click', ()=>{
         )
         // Table Lode
         LoadCustomerData();
+        $('#custSaveBtn').css('display', 'block');
+        $('#custdeleteBtn').css('display','none');
+        $('#custUpdateBtn').css('display','none');
         $("#reset_btn").click();
     }
 
@@ -113,8 +117,30 @@ $("#custdeleteBtn").on('click',()=>{
     )
     LoadCustomerData();
 
+    $('#custSaveBtn').css('display', 'block');
+    $('#custdeleteBtn').css('display','none');
+    $('#custUpdateBtn').css('display','none');
     $("#reset_btn").click();
 });
+
+
+//Search Customer
+$('#customerSearchBtn').on('click', () =>{
+    let custId = $('#customer_searchTxt').val();
+
+    let search_CustomerIndex = customer_db.findIndex(item => item.customer_Id === custId);
+
+    $('#customer_Table').empty();
+
+    var newRow = "<tr><th scope='row'>" + customer_db[search_CustomerIndex].customer_Id + "</th><td>" + customer_db[search_CustomerIndex].customer_Name + "</td><td>" + customer_db[search_CustomerIndex].customer_Mail + "</td><td>" + customer_db[search_CustomerIndex].customer_Address + "</td><td>" + customer_db[search_CustomerIndex].customer_Gender + "</td></tr>";
+    $('#customer_Table').append(newRow);
+});
+
+$('#customer_searchTxt').on('click', () =>{
+    LoadCustomerData();
+})
+
+
 
 function validate(value, field_name){
     if (!value){
@@ -128,3 +154,8 @@ function validate(value, field_name){
 }
 
 
+$("#customer_Table").on("click", "tr", function() {
+    $('#custSaveBtn').css('display', 'none');
+    $('#custdeleteBtn').css('display','block');
+    $('#custUpdateBtn').css('display','block');
+});
